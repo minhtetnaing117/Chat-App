@@ -1,20 +1,17 @@
-import 'package:chat_app/components/my_button.dart';
 import 'package:flutter/material.dart';
 
+import '../components/my_button.dart';
 import '../components/my_textfield.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
 
-  // email and pw text controllers
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwController = TextEditingController();
+  final TextEditingController _confirmController = TextEditingController();
 
-  LoginPage({super.key});
+  RegisterPage({super.key});
 
-  // login method
-  void login(){
-    
-  }
+  void register(){}
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +26,13 @@ class LoginPage extends StatelessWidget {
               Icons.message,
               size: 60,
               color: Theme.of(context).colorScheme.primary,
-              ),
+            ),
 
             const SizedBox(height: 50),
 
             // welcome back message
             Text(
-              "Welcome back, you've been missed!",
+              "Let's create account for you",
               style: TextStyle(
                 color: Theme.of(context).colorScheme.primary,
                 fontSize: 16,
@@ -60,13 +57,22 @@ class LoginPage extends StatelessWidget {
               controller: _pwController,
             ),
 
+            const SizedBox(height: 10),
+
+            // Confirm textfield
+            MyTextfield(
+              hintText: "Confirm Password",
+              obscureText: true,
+              controller: _confirmController,
+            ),
+
 
             const SizedBox(height: 25),
 
             // login
             MyButton(
-              text: "Login",
-              onTap: login,
+              text: "Register",
+              onTap: register,
             ),
 
             const SizedBox(height: 25),
@@ -76,14 +82,14 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                    "Not a member?",
+                  "Already have an account?",
                   style:
                   TextStyle(
                     color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
                 Text(
-                  "Register now",
+                  "Login now",
                   style:
                   TextStyle(
                     fontWeight: FontWeight.bold,
