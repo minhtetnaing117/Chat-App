@@ -55,8 +55,10 @@ class HomePage extends StatelessWidget {
   }
 
   // build invidual list title for user
-  Widget _buildUserListItem(Map<String, dynamic> userData, BuildContext context){
-    return UserTile(
+  Widget _buildUserListItem(
+    Map<String, dynamic> userData, BuildContext context){
+    if(userData['email'] != _authService.getCurrentUser()!.email){
+      return UserTile(
       text: userData["email"],
       onTap: (){
         // tapped on a user -> go to chat page
@@ -65,10 +67,14 @@ class HomePage extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => ChatPage(
               receiverEmail: userData['email'],
+              receiverID: userData['uid'],
             ),
             )
         );
       }
     );
+    } else {
+      return  Container();
+    }
   }
 }
